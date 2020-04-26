@@ -1,8 +1,10 @@
 const pauseMenu = document.getElementById('pause-menu');
 const pauseMenuIcon = document.getElementById('pause-menu-icon');
+const consoleWindow = document.getElementById('console-window');
 
 // config things
 let pauseMenuOpen = false;
+let consoleWindowOpen = false;
 
 // pausing the game
 pauseMenuIcon.addEventListener('click', () => {

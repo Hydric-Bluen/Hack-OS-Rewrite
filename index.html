@@ -8,15 +8,35 @@
   <body>
     <header class="topbar">
       <div style="display: inline-flex; flex-direction: row; align-items: center;">
-        <img id="pause-menu-icon" alt="PauseIcon.svg" src="images/PauseIcon.png" />
+        <img id="pause-menu-icon" alt="PauseIcon.png" src="res/images/PauseIcon.png" />
         <h2>Hack OS</h2>
       </div>
     </header>
-    <div id="pause-menu">
+    <div class="body">
+      <div class="icon">
+        <img id="email-window-icon" alt="EmailIcon.png" src="res/images/EmailIcon.png" />
+        <label>Email</label>
+      </div>
+      <div class="icon">
+        <img id="console-window-icon" alt="ConsoleIcon" src="res/images/ConsoleIcon.png" />
+        <label>Console</label>
+      </div>
+    </div>
+    <div class="window" id="console-window">
+      <header>
+        <h5>Console</h5>
+      </header>
+    </div>
+    <div class="window" id="email-window">
+      <header>
+        <h5>Email</h5>
+      </header>
+    </div>
+    <div class="window" id="pause-menu">
       <header>
         <h5>Paused</h5>
       </header>
-      <div class="body">
+      <div id="pause-menu-body" class="body">
         <button type="button" onclick="quitGame()">Quit</button>
       </div>
     </div>
