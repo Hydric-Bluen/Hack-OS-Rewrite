@@ -37,6 +37,14 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
+// Audio Objects
+const clickAudio = document.getElementById('click');
+
+// playing a click sound whenever the player clicks their mouse button
+window.addEventListener('click', () => {
+  clickAudio.play();
+});
+
 // quitting the game
 function quitGame() {
   window.close();
