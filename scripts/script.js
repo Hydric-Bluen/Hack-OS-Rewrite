@@ -34,3 +34,8 @@ window.addEventListener('keydown', (event) => {
       }
   }
 });
+
+// quitting the game
+function quitGame() {
+  window.close();
+}

@@ -5,9 +5,12 @@
   font-family: sans-serif;
 }
 
+*:hover {
+  cursor: default;
+}
+
 body {
   background-color: lightgrey;
-  position: relative;
 }
 
 header {
@@ -27,6 +30,9 @@ header h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 45vh;
+  height: 35vh;
+  border: solid medium black;
 }
 
 #pause-menu-icon {
@@ -35,5 +41,24 @@ header h3 {
 }
 
 #pause-menu-icon:hover {
+  cursor: pointer;
+}
+
+.body {
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: solid medium black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+button:hover {
   cursor: pointer;
 }
