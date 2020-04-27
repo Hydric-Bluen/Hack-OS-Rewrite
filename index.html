@@ -32,13 +32,11 @@
     <div class="body-flex-row">
       <div class="window" id="email-window">
         <header>
-          <h5>Emails</h5>
+          <h5>Inbox</h5>
         </header>
-        <div class="body">
+        <div id="email-window-body" class="body">
           <table>
-            <tbody id="email-window-body">
-
-            </tbody>
+            <tbody id="email-window-body-table"></tbody>
           </table>
         </div>
       </div>
@@ -47,7 +45,7 @@
           <h5 id="topic">Email</h5>
           <p id="author"></p>
         </header>
-        <div class="body">
+        <div id="body-container" class="body">
           <p id="body-content"></p>
         </div>
       </div>
@@ -67,6 +65,7 @@
     </audio>
     <script type="text/javascript" src="scripts/data/Emails.js"></script>
     <script type="text/javascript" src="scripts/data/config.js"></script>
+    <script type="text/javascript" src="scripts/windowhandler.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
   </body>
 </html>

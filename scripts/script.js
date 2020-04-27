@@ -3,19 +3,25 @@ function generateEmail() {
   let author = Math.floor(Math.random() * names.length);
   let topic  = Math.floor(Math.random() * topics.length);
   let body   = Math.floor(Math.random() * bodies.length);
+  let price  = Math.floor(Math.random() * prices.length);
 
   // adding the email to the emails object
   emails.push({
-    title: topics[topic].toString(),
-    topic: topics[topic].toString(),
+    title:  topics[topic].toString(),
+    topic:  topics[topic].toString(),
     author: names[author].toString(),
-    body: bodies[body].toString()}
+    body:   bodies[body].toString(),
+    price:  prices[price].toString(),
+    accepted: false}
   );
+
   displayEmails();
 }
 
 // displaying all the emails
 function displayEmails() {
+  // clear the emailWindowBody before drawing the emails onto it
+  emailWindowBody.innerHTML = '';
   // scrolling through the emails array for information
   for(email in emails) {
     emails[email].topic.replace(' ', '-');
@@ -28,6 +34,8 @@ function displaySpecificEmail(title) {
   for(email in emails) {
     // check to see if the title of the email is actually in the database
     if(emails[email].title === title) {
+      // change the email body for a sort moment
+      emails[email].body += `<button id="deny-contract" onclick="denyContract('${emails[email].title}')">Deny</button><button id='accept-contract' onclick="acceptContract('${emails[email].title}')">Accept</button>`;
       // set everything inside of the specific email window
       specificEmailAuthor.innerHTML = `${emails[email].author}`;
       specificEmailTopic.innerHTML  = `${emails[email].topic}`;
@@ -38,55 +46,23 @@ function displaySpecificEmail(title) {
   }
 }
 
-// opening & closing the email window
-emailWindowIcon.addEventListener('click', () => {
-  switch(emailWindowOpen) {
-    case true:
-      emailWindow.style.display = "none";
-      emailWindowOpen = false;
-    break;
-    case false:
-      emailWindow.style.display = "block";
-      emailWindowOpen = true;
-    break;
-  }
-});
+function acceptContract() { return; }
 
-// pausing the game
-pauseMenuIcon.addEventListener('click', () => {
-  switch(pauseMenuOpen) {
-    case true:
-      pauseMenu.style.display = "none";
-      pauseMenuOpen = false;
-    break;
-    case false:
-      pauseMenu.style.display = "block";
-      pauseMenuOpen = true;
-    break;
-  }
-});
-
-window.addEventListener('keydown', (event) => {
-  switch(event.keyCode) {
-    case escape:
-      if(pauseMenuOpen) {
-        pauseMenu.style.display = "none";
-        pauseMenuOpen = false;
-        break;
-      } else {
-        pauseMenu.style.display = "block";
-        pauseMenuOpen = true;
-        break;
-      }
-  }
-});
-
-// playing a click sound whenever the player clicks their mouse button
-window.addEventListener('click', () => {
-  clickAudio.play();
-});
+function denyContract() { return; }
 
 // quitting the game
 function quitGame() {
   window.close();
 }
+
+function update() {
+  emailTimer -= 1;
+  if(emailTimer <= 0 && emailCount < maxEmails) {
+    generateEmail();
+    emailCount++;
+    emailTimer = 100;
+  }
+  window.requestAnimationFrame(update);
+}
+
+window.requestAnimationFrame(update);
