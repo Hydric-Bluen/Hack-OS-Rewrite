@@ -56,11 +56,13 @@ function quitGame() {
 }
 
 function update() {
-  emailTimer -= 1;
-  if(emailTimer <= 0 && emailCount < maxEmails) {
-    generateEmail();
-    emailCount++;
-    emailTimer = 100;
+  if(!paused) {
+    emailTimer -= 1;
+    if(emailTimer <= 0 && emailCount < maxEmails) {
+      generateEmail();
+      emailCount++;
+      emailTimer = 100;
+    }
   }
   window.requestAnimationFrame(update);
 }

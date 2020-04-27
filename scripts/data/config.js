@@ -30,3 +30,5 @@ let emailTimer = 100;
 let emails = [];
 let maxEmails = 10;
 let emailCount = 0;
+
+let paused = false;

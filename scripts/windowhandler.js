@@ -4,6 +4,7 @@ emailWindowIcon.addEventListener('click', () => {
     case true:
       emailWindow.style.display = "none";
       emailWindowOpen = false;
+      specificEmail.style.display = "none";
     break;
     case false:
       emailWindow.style.display = "block";
@@ -18,10 +19,12 @@ pauseMenuIcon.addEventListener('click', () => {
     case true:
       pauseMenu.style.display = "none";
       pauseMenuOpen = false;
+      paused = false;
     break;
     case false:
       pauseMenu.style.display = "block";
       pauseMenuOpen = true;
+      paused = true;
     break;
   }
 });
@@ -32,10 +35,12 @@ window.addEventListener('keydown', (event) => {
       if(pauseMenuOpen) {
         pauseMenu.style.display = "none";
         pauseMenuOpen = false;
+        paused = false;
         break;
       } else {
         pauseMenu.style.display = "block";
         pauseMenuOpen = true;
+        paused = true;
         break;
       }
   }
