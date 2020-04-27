@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <script type="text/javascript" src="scripts/data/keybinds.js"></script>
+    <script type="text/javascript" src="scripts/data/program commands.js"></script>
   </head>
   <body>
     <header class="topbar">
@@ -18,7 +20,7 @@
         <label>Email</label>
       </div>
       <div class="icon">
-        <img id="console-window-icon" alt="ConsoleIcon" src="res/images/ConsoleIcon.png" />
+        <img id="console-window-icon" alt="ConsoleIcon.png" src="res/images/ConsoleIcon.png" />
         <label>Console</label>
       </div>
     </div>
@@ -27,17 +29,35 @@
         <h5>Console</h5>
       </header>
     </div>
-    <div class="window" id="email-window">
-      <header>
-        <h5>Email</h5>
-      </header>
+    <div class="body-flex-row">
+      <div class="window" id="email-window">
+        <header>
+          <h5>Emails</h5>
+        </header>
+        <div class="body">
+          <table>
+            <tbody id="email-window-body">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="window" id="specific-email">
+        <header>
+          <h5 id="topic">Email</h5>
+          <p id="author"></p>
+        </header>
+        <div class="body">
+          <p id="body-content"></p>
+        </div>
+      </div>
     </div>
     <div class="window" id="pause-menu">
       <header>
         <h5>Paused</h5>
       </header>
-      <div id="pause-menu-body" class="body">
-        <button type="button" onclick="quitGame()">Quit</button>
+      <div class="body-flex-column">
+        <button class="stretch-button" type="button" onclick="quitGame()">Quit</button>
       </div>
     </div>
     <!-- Audio -->
@@ -45,9 +65,8 @@
       <source src="res/audio/click.mp3" type="audio/mpeg" />
       <source src="res/audio/click.ogg" type="audio/ogg" />
     </audio>
-    <!-- All of the javascript imports -->
-    <script type="text/javascript" src="scripts/data/keybinds.js"></script>
-    <script type="text/javascript" src="scripts/data/program commands.js"></script>
+    <script type="text/javascript" src="scripts/data/Emails.js"></script>
+    <script type="text/javascript" src="scripts/data/config.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
   </body>
 </html>

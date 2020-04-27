@@ -24,12 +24,7 @@ header h3 {
 }
 
 .window {
-  z-index: 100;
   display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 45vh;
   height: 35vh;
   border: solid medium black;
@@ -45,12 +40,20 @@ img:hover {
 }
 
 .body {
-  margin: 8px;
+  padding: 8px
 }
 
-#pause-menu-body {
+.body-flex-column {
+  padding: 8px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.body-flex-row {
+  padding: 8px;
+  display: flex;
+  flex-direction: tow;
   align-items: center;
 }
 
@@ -60,14 +63,40 @@ img:hover {
   align-items: center;
 }
 
-button {
-  border: solid medium black;
+#pause-menu {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.email {
   background-color: white;
+  border: solid medium black;
+  padding: 4px;
+  width: 22vw;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.email:hover {
+  cursor: pointer;
+}
+
+.email p:hover {
+  cursor: pointer;
+}
+
+.stretch-button {
+  width: 22vw;
+}
+
+button {
+  border: solid medium black;
+  background-color: white;
   padding: 8px;
-  width: inherit;
 }
 
 button:hover {
