@@ -17,7 +17,8 @@ const newEmailContainer   = document.getElementById('new-emails');
 const newEmailCount       = document.getElementById('new-email-count');
 
 // Audio
-const clickAudio = document.getElementById('click');
+const clickAudio          = document.getElementById('click');
+const notificationAudio   = document.getElementById('notification');
 
 // config things
 let pauseMenuOpen     = false;
@@ -26,18 +27,18 @@ let emailWindowOpen   = false;
 let specificEmailOpen = false;
 
 // timers
-let emailTimer = 100;
-//Math.floor(Math.random() * 10000);
+let emailTimer = Math.floor(Math.random() * 1000);
 
 // emails
-let emails = [];
-let maxEmails = 10;
+let emails     = [];
+let maxEmails  = 10;
 let emailCount = 0;
-let newEmails = 0;
+let newEmails  = 0;
 
 // accepted emails
-let acceptedEmails = [];
-let maxAcceptedEmails = 5;
+let acceptedEmails     = [];
+let maxAcceptedEmails  = 5;
 let acceptedEmailCount = 0;
 
+// pausing
 let paused = false;
