@@ -44,6 +44,11 @@ img:hover {
   height: 38.5px;
 }
 
+#console-window-icon {
+  width: 46.5px;
+  height: 38.5px;
+}
+
 .body {
   padding: 8px
 }
@@ -62,6 +67,12 @@ img:hover {
   align-items: center;
 }
 
+.body-border {
+  border: solid medium black;
+  padding: 8px;
+  background-color: white;
+}
+
 .icon {
   display: inline-flex;
   flex-direction: column;
@@ -74,6 +85,14 @@ img:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#console-window .body #command-line-input {
+  margin-top: 8px;
+}
+
+#console-window .body .body-border {
+  height: 21.65vh;
 }
 
 .email {
@@ -102,6 +121,12 @@ img:hover {
 
 .stretch-button {
   width: 22vw;
+}
+
+input {
+  width: 22vw;
+  border: solid medium black;
+  padding: 2px;
 }
 
 button {

@@ -3,6 +3,9 @@ const pauseMenu           = document.getElementById('pause-menu');
 const pauseMenuIcon       = document.getElementById('pause-menu-icon');
 // console window variables
 const consoleWindow       = document.getElementById('console-window');
+const consoleWindowIcon   = document.getElementById('console-window-icon');
+const consoleWindowInput  = document.getElementById('command-line-input');
+const consoleWindowOutput = document.getElementById('command-line-output');
 // email window variables
 const emailWindow         = document.getElementById('email-window');
 const emailWindowIcon     = document.getElementById('email-window-icon');

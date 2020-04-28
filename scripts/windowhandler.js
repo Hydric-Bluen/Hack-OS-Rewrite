@@ -14,6 +14,20 @@ emailWindowIcon.addEventListener('click', () => {
   }
 });
 
+// opening and closing the console window
+consoleWindowIcon.addEventListener('click', () => {
+  switch(consoleWindowOpen) {
+    case true:
+      consoleWindow.style.display = "none";
+      consoleWindowOpen = false;
+    break;
+    case false:
+      consoleWindow.style.display = "block";
+      consoleWindowOpen = true;
+    break;
+  }
+});
+
 // pausing the game
 pauseMenuIcon.addEventListener('click', () => {
   switch(pauseMenuOpen) {

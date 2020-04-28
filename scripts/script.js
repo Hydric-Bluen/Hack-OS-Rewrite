@@ -94,11 +94,43 @@ function denyContract(title, author, price) {
 // cancelling contracts
 function cancelContract(title, author, price) { return; }
 
+// checking if the enter key is pressed inside of the console window
+consoleWindow.addEventListener('keydown', (event) => {
+  if(!paused) {
+    switch(event.keyCode) {
+      // check if the enter key has been pressed
+      case enter:
+        // scroll through the consoleCommands array
+        for(command in consoleCommands) {
+          // check if the command exists in the consoleCommands array
+          if(consoleCommands[command].name === toLowerCase(consoleWindowInput.value)) {
+            // display output
+            consoleWindowOutput.innerHTML = `${consoleCommands[command].output}`;
+            // reset the input value
+            consoleWindowInput.value = "";
+          }
+        }
+      break;
+    }
+  }
+});
+
+// .toLowerCase()
+function toLowerCase(value) {
+  return value.toLowerCase();
+}
+
+// .toUpperCase()
+function toUpperCase(value) {
+  return value.toUpperCase();
+}
+
 // quitting the game
 function quitGame() {
   window.close();
 }
 
+// main game loop
 function update() {
   if(!paused) {
     if(emailCount < maxEmails) {
