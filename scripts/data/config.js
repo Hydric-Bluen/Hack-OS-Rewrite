@@ -28,6 +28,7 @@ let emailTimer = 100;
 
 // emails object
 let emails = [];
+let acceptedEmails = [];
 let maxEmails = 10;
 let emailCount = 0;
 

@@ -1,4 +1,4 @@
-let names = ['Unknownx', 'rembrantreverence', 'gamekeeperlasso', 'soursupplier', 'donutbribe', 'legalunify', 'ambushjohannesburg', 'bairycomrade', 'icescarf', 'definitefall', 'hoaryroshanna', 'unaffectedtom', 'gazingfairs', 'militarycluppins', 'behaviourbook'];
+let names = ['Unknownx', 'KingLucien', 'WarGang', 'Elfy', 'Nobody Special', 'Melie', 'Dadwick', 'Gabrijel'];
 
 let topics = ['Password Cracking', 'Creditcard Cracking', 'PHP Injection', 'WiFi Cracking', 'Computer Cracking'];
 

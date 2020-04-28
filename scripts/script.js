@@ -7,13 +7,13 @@ function generateEmail() {
 
   // adding the email to the emails object
   emails.push({
-    title:  topics[topic].toString(),
-    topic:  topics[topic].toString(),
-    author: names[author].toString(),
-    body:   bodies[body].toString(),
-    price:  prices[price].toString(),
-    accepted: false}
-  );
+    title:    topics[topic].toString(),
+    topic:    topics[topic].toString(),
+    author:   names[author].toString(),
+    body:      bodies[body].toString(),
+    price:    prices[price],
+    accepted: false
+  });
 
   displayEmails();
 }
@@ -29,26 +29,51 @@ function displayEmails() {
   }
 }
 
+// displaying specific email content
 function displaySpecificEmail(title) {
   // scroll through to see if the email exists in the database
   for(email in emails) {
     // check to see if the title of the email is actually in the database
     if(emails[email].title === title) {
-      // change the email body for a sort moment
-      emails[email].body += `<button id="deny-contract" onclick="denyContract('${emails[email].title}')">Deny</button><button id='accept-contract' onclick="acceptContract('${emails[email].title}')">Accept</button>`;
+      // reset the body html before writing to it
+      specificEmailBody.innerHTML = ``;
       // set everything inside of the specific email window
       specificEmailAuthor.innerHTML = `${emails[email].author}`;
       specificEmailTopic.innerHTML  = `${emails[email].topic}`;
-      specificEmailBody.innerHTML   = `${emails[email].body}`;
+      specificEmailBody.innerHTML   = `${emails[email].body} <p>${emails[email].price}</p>
+      <button id='accept-contract' onclick="acceptContract('${emails[email].title}', '${emails[email].author}', ${emails[email].price})">Accept</button>
+      <button id="deny-contract" onclick="denyContract('${emails[email].title}', '${emails[email].author}', ${emails[email].price})">Deny</button>`;
       // set the display for the specific email window to true
       specificEmail.style.display = "block";
     }
   }
 }
 
-function acceptContract() { return; }
+// accepting contracts
+function acceptContract(title, author, price) {
+  // scroll through the emails object
+  for(email in emails) {
+    // check to see if the title of the email is actually in the database
+    if(emails[email].title === title && emails[email].author === author && emails[email].price === price) {
+      // push the email to the acceptedEmails array
+      acceptedEmails.push({
+        title:  emails[email].title,
+        topic:  emails[email].topic,
+        author: emails[email].author,
+        body:   emails[email].body,
+        price:  emails[email].price,
+      });
+      // erase the email from the emails array
+      emails.splice(emails[email], 1);
+    }
+  }
+}
 
-function denyContract() { return; }
+// refusing contracts
+function denyContract(title, author, price) { return; }
+
+// cancelling contracts
+function cancelContract(title, author, price) { return; }
 
 // quitting the game
 function quitGame() {
