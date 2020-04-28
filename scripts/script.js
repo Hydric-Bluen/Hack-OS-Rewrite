@@ -65,12 +65,31 @@ function acceptContract(title, author, price) {
       });
       // erase the email from the emails array
       emails.splice(emails[email], 1);
+      emailCount--;
+      // hide the specific email window
+      specificEmail.style.display = "none";
+      // redrawing the emails to the emails body
+      displayEmails();
     }
   }
 }
 
 // refusing contracts
-function denyContract(title, author, price) { return; }
+function denyContract(title, author, price) {
+  // scrolling through the emails array
+  for(email in emails) {
+    // checking if the email exists in the array
+    if(emails[email].title === title && emails[email].author === author && emails[email].price === price) {
+      // removing the email from the array
+      emails.splice(emails[email], 1);
+      emailCount--;
+      // hiding the specific email window
+      specificEmail.style.display = "none";
+      // redrawing all of the emails
+      displayEmails();
+    }
+  }
+}
 
 // cancelling contracts
 function cancelContract(title, author, price) { return; }
@@ -82,8 +101,10 @@ function quitGame() {
 
 function update() {
   if(!paused) {
-    emailTimer -= 1;
-    if(emailTimer <= 0 && emailCount < maxEmails) {
+    if(emailCount < maxEmails) {
+      emailTimer -= 1;
+    }
+    if(emailTimer <= 0) {
       generateEmail();
       emailCount++;
       emailTimer = 100;
