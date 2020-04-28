@@ -27,7 +27,7 @@ let emailWindowOpen   = false;
 let specificEmailOpen = false;
 
 // timers
-let emailTimer = Math.floor(Math.random() * 1000);
+let emailTimer = Math.floor(Math.random() * 5000);
 
 // emails
 let emails     = [];

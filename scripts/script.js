@@ -108,9 +108,10 @@ function update() {
       generateEmail();
       if(!emailWindowOpen) {
         newEmails++;
+        notificationAudio.play();
       }
       emailCount++;
-      emailTimer = 100;
+      emailTimer = Math.floor(Math.random() * 5000);
     }
     if(newEmails == 0) {
       newEmailContainer.style.display = "none";

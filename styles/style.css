@@ -39,6 +39,11 @@ img:hover {
   cursor: pointer;
 }
 
+#email-window-icon {
+  width: 46.5px;
+  height: 38.5px;
+}
+
 .body {
   padding: 8px
 }
