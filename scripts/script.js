@@ -64,7 +64,7 @@ function acceptContract(title, author, price) {
         price:  emails[email].price,
       });
       // erase the email from the emails array
-      emails.splice(emails[email], 1);
+      emails.splice(email, 1);
       emailCount--;
       // hide the specific email window
       specificEmail.style.display = "none";
@@ -81,7 +81,7 @@ function denyContract(title, author, price) {
     // checking if the email exists in the array
     if(emails[email].title === title && emails[email].author === author && emails[email].price === price) {
       // removing the email from the array
-      emails.splice(emails[email], 1);
+      emails.splice(email, 1);
       emailCount--;
       // hiding the specific email window
       specificEmail.style.display = "none";
@@ -106,10 +106,20 @@ function update() {
     }
     if(emailTimer <= 0) {
       generateEmail();
+      if(!emailWindowOpen) {
+        newEmails++;
+      }
       emailCount++;
       emailTimer = 100;
     }
+    if(newEmails == 0) {
+      newEmailContainer.style.display = "none";
+    } else {
+      newEmailContainer.style.display = "flex";
+      newEmailCount.innerHTML = `${newEmails}`;
+    }
   }
+
   window.requestAnimationFrame(update);
 }
 

@@ -12,6 +12,9 @@ const specificEmail       = document.getElementById('specific-email');
 const specificEmailAuthor = document.getElementById('author');
 const specificEmailTopic  = document.getElementById('topic');
 const specificEmailBody   = document.getElementById('body-content');
+// new email count notification
+const newEmailContainer   = document.getElementById('new-emails');
+const newEmailCount       = document.getElementById('new-email-count');
 
 // Audio
 const clickAudio = document.getElementById('click');
@@ -26,10 +29,15 @@ let specificEmailOpen = false;
 let emailTimer = 100;
 //Math.floor(Math.random() * 10000);
 
-// emails object
+// emails
 let emails = [];
-let acceptedEmails = [];
 let maxEmails = 10;
 let emailCount = 0;
+let newEmails = 0;
+
+// accepted emails
+let acceptedEmails = [];
+let maxAcceptedEmails = 5;
+let acceptedEmailCount = 0;
 
 let paused = false;

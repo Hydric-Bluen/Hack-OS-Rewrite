@@ -9,6 +9,7 @@ emailWindowIcon.addEventListener('click', () => {
     case false:
       emailWindow.style.display = "block";
       emailWindowOpen = true;
+      newEmails = 0;
     break;
   }
 });
