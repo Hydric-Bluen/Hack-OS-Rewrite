@@ -44,6 +44,11 @@ img:hover {
   height: 38.5px;
 }
 
+#shop-window-icon {
+  width: 46.5px;
+  height: 38.5px;
+}
+
 #console-window-icon {
   width: 46.5px;
   height: 38.5px;
@@ -95,7 +100,7 @@ img:hover {
   height: 21.65vh;
 }
 
-.email {
+.item {
   background-color: white;
   border: solid medium black;
   padding: 4px;
@@ -105,11 +110,11 @@ img:hover {
   justify-content: center;
 }
 
-.email:hover {
+.item:hover {
   cursor: pointer;
 }
 
-.email p:hover {
+.item p:hover {
   cursor: pointer;
 }
 
@@ -177,6 +182,19 @@ button:hover {
 
 #new-email-count {
   color: white;
+}
+
+#shop-window-body {
+  height: 29vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.icon-hidden {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  display: none;
 }
 
 /* Custom Scrollbar */

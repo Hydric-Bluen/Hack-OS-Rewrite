@@ -18,14 +18,75 @@ function generateEmail() {
   displayEmails();
 }
 
+// display shop items
+function displayShopItems() {
+  // clear the shopWindowTable before redrawing to it
+  shopWindowTable.innerHTML = ``;
+  // scrolling through the items in the shopItems array
+  for(item in shopItems) {
+    // checking if the item can be bought over and over
+    if(shopItems[item].infinite) {
+      // displaying the items
+      shopWindowTable.innerHTML += `
+      <tr>
+        <td style="height: 12vh; position: relative;" class="item">
+          <div style="text-align: left; position: absolute; left: 0%;" class="body-flex-column">
+            <p>${shopItems[item].name}<br>Price: $${shopItems[item].price}<br>Quantity: ${shopItems[item].quantity}</p>
+          </div>
+          <button style="z-index: 2; position: absolute; right: 5%;" onclick="buyItem(${shopItems[item].name})">Buy</button>
+        </td>
+      </tr>
+      `;
+    } else {
+      // displaying the items
+      shopWindowTable.innerHTML += `
+      <tr>
+        <td style="height: 12vh; position: relative;" class="item">
+          <div style="text-align: left; position: absolute; left: 0%;" class="body-flex-column">
+            <p>${shopItems[item].name}<br>Price: $${shopItems[item].price}</p>
+          </div>
+          <button style="z-index: 2; position: absolute; right: 5%;" onclick="buyItem(${shopItems[item].name})">Buy</button>
+        </td>
+      </tr>
+      `;
+    }
+  }
+}
+
+// buying items
+function buyItem(name) {
+  // scrolling the shopItems array to check if the item exists in the database
+  for(item in shopItems) {
+    // check if the name exists and if it's infinite or not
+    if(shopItems[item].name === name && shopItems[item].infinite) {
+      // check if the wallet has enough money to pay for the item
+      if(wallet >= shopItems[item].price) {
+        // removing money from the wallet
+        wallet -= shopItems[item].price;
+        // increasing the quantity of the item owned
+        shopItems[item].quantity++;
+      }
+    } else if(shopItems[item].name === name && !shopItems[item].infinite) {
+      // check if the wallet has enough money to pay for the item
+      if(wallet >= shopItems[item].price) {
+        // removing money from the wallet
+        wallet -= shopItems[item].price;
+        // showing the item's icon on the desktop
+        shopItems[item].icon.style.display = "block";
+        // removing the item from the array
+        shopItems.splice(item, 1);
+      }
+    }
+  }
+}
+
 // displaying all the emails
 function displayEmails() {
   // clear the emailWindowBody before drawing the emails onto it
   emailWindowBody.innerHTML = '';
   // scrolling through the emails array for information
   for(email in emails) {
-    emails[email].topic.replace(' ', '-');
-    emailWindowBody.innerHTML += `<tr><td class="email" onclick="displaySpecificEmail('${emails[email].title}')"><p>${emails[email].title}</p></td></tr>`;
+    emailWindowBody.innerHTML += `<tr><td class="item" onclick="displaySpecificEmail('${emails[email].title}')"><p>${emails[email].title}</p></td></tr>`;
   }
 }
 
@@ -132,27 +193,42 @@ function quitGame() {
 
 // main game loop
 function update() {
+  // checking if the game is paused
   if(!paused) {
+    // checking if the emailCount is below the email cap
     if(emailCount < maxEmails) {
+      // lowering the timer
       emailTimer -= 1;
     }
+    // checking if the timer is below or equal to 0
     if(emailTimer <= 0) {
+      // generating emails
       generateEmail();
+      // checking if the email window is open or not
       if(!emailWindowOpen) {
+        // incrementing the newEmails variable
         newEmails++;
+        // playing the notification sound
         notificationAudio.play();
       }
+      // adding to the email count
       emailCount++;
+      // reseting the timer to a random value
       emailTimer = Math.floor(Math.random() * 5000);
     }
+    // checking if the newEmails is equal to zero, if so, set the newEmailContainer display to none. (Hiding it)
     if(newEmails == 0) {
       newEmailContainer.style.display = "none";
     } else {
+      // if the newEmails variable is not equal to zero, show the newEmailContainer and show how many new emails there are.
       newEmailContainer.style.display = "flex";
       newEmailCount.innerHTML = `${newEmails}`;
     }
+    // drawing the player wallet onto the shop header
+    shopHeader.innerHTML = `Shop<p style="float: right;">Wallet: ${wallet}</p>`;
   }
-
+  // displaying the shop items inside of the shop
+  displayShopItems();
   window.requestAnimationFrame(update);
 }
 

@@ -28,6 +28,20 @@ consoleWindowIcon.addEventListener('click', () => {
   }
 });
 
+// opening and closing the shop window
+shopWindowIcon.addEventListener('click', () => {
+  switch(shopWindowOpen) {
+    case true:
+      shopWindow.style.display = "none";
+      shopWindowOpen = false;
+    break;
+    case false:
+      shopWindow.style.display = "block";
+      shopWindowOpen = true;
+    break;
+  }
+});
+
 // pausing the game
 pauseMenuIcon.addEventListener('click', () => {
   switch(pauseMenuOpen) {
