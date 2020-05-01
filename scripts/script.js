@@ -31,9 +31,9 @@ function displayShopItems() {
       <tr>
         <td style="height: 12vh; position: relative;" class="item">
           <div style="text-align: left; position: absolute; left: 0%;" class="body-flex-column">
-            <p>${shopItems[item].name}<br>Price: $${shopItems[item].price}<br>Quantity: ${shopItems[item].quantity}</p>
+            <p id="infinite-text">${shopItems[item].name}<br>Price: $${shopItems[item].price}</p>
           </div>
-          <button style="z-index: 2; position: absolute; right: 5%;" onclick="buyItem(${shopItems[item].name})">Buy</button>
+          <button style="z-index: 2; position: absolute; right: 5%;" onclick="buyItem('${shopItems[item].name}')">Buy</button>
         </td>
       </tr>
       `;
@@ -45,7 +45,7 @@ function displayShopItems() {
           <div style="text-align: left; position: absolute; left: 0%;" class="body-flex-column">
             <p>${shopItems[item].name}<br>Price: $${shopItems[item].price}</p>
           </div>
-          <button style="z-index: 2; position: absolute; right: 5%;" onclick="buyItem(${shopItems[item].name})">Buy</button>
+          <button style="z-index: 2; position: absolute; right: 5%;" onclick="buyItem('${shopItems[item].name}')">Buy</button>
         </td>
       </tr>
       `;
@@ -57,14 +57,18 @@ function displayShopItems() {
 function buyItem(name) {
   // scrolling the shopItems array to check if the item exists in the database
   for(item in shopItems) {
-    // check if the name exists and if it's infinite or not
+    // check if the item is inside the array and if it's infinite or not
     if(shopItems[item].name === name && shopItems[item].infinite) {
       // check if the wallet has enough money to pay for the item
       if(wallet >= shopItems[item].price) {
-        // removing money from the wallet
+        // removing the money from the wallet
         wallet -= shopItems[item].price;
-        // increasing the quantity of the item owned
-        shopItems[item].quantity++;
+        // adding to the quantity
+        shopItems[item].quantity += 1;
+        // showing the icon on the header
+        shopItems[item].icon.style.display = "flex";
+        // drawing the quantity
+        quantityText.innerHTML = `${shopItems[item].quantity}`;
       }
     } else if(shopItems[item].name === name && !shopItems[item].infinite) {
       // check if the wallet has enough money to pay for the item
@@ -72,9 +76,11 @@ function buyItem(name) {
         // removing money from the wallet
         wallet -= shopItems[item].price;
         // showing the item's icon on the desktop
-        shopItems[item].icon.style.display = "block";
+        shopItems[item].icon.style.display = "flex";
         // removing the item from the array
         shopItems.splice(item, 1);
+        // redrawings
+        displayShopItems();
       }
     }
   }
@@ -227,9 +233,9 @@ function update() {
     // drawing the player wallet onto the shop header
     shopHeader.innerHTML = `Shop<p style="float: right;">Wallet: ${wallet}</p>`;
   }
-  // displaying the shop items inside of the shop
-  displayShopItems();
   window.requestAnimationFrame(update);
 }
+
+displayShopItems();
 
 window.requestAnimationFrame(update);

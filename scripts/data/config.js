@@ -29,6 +29,9 @@ const shopHeader          = document.getElementById('shop-header');
 const shopWindowIcon      = document.getElementById('shop-window-icon');
 const shopWindowTable     = document.getElementById('shop-window-table');
 
+// back door hack
+const quantityText        = document.getElementById('quantity');
+
 // Audio
 const clickAudio          = document.getElementById('click');
 const notificationAudio   = document.getElementById('notification');
@@ -56,7 +59,7 @@ let acceptedEmailCount = 0;
 
 // a bunch of shop items
 let shopItems = [
-  {name: "Back Door Hack", price: 50, quantity: 0, infinite: true, bought: false, icon: null},
+  {name: "Back Door Hack", price: 50, quantity: 0, infinite: true, bought: false, icon: document.getElementById("back-door-hack-icon")},
   {name: "WiFi Cracker", price: 100, quantity: 0, infinite: false, bought: false, icon: document.getElementById("wifi-cracker-icon")},
   {name: "Password Cracker", price: 75, quantity: 0, infinite: false, bought: false, icon: document.getElementById("password-cracker-icon")},
   {name: "PHP Injector", price: 250, quantity: 0, infinite: false, bought: false, icon: document.getElementById("php-injector-icon")},

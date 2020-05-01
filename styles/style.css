@@ -197,6 +197,14 @@ button:hover {
   display: none;
 }
 
+.icons {
+  float: right;
+}
+
+label {
+  font-size: 12px;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
