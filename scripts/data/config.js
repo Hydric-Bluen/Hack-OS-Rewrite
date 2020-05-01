@@ -59,15 +59,19 @@ let acceptedEmailCount = 0;
 
 // a bunch of shop items
 let shopItems = [
-  {name: "Back Door Hack", price: 50, quantity: 0, infinite: true, bought: false, icon: document.getElementById("back-door-hack-icon")},
+  {name: "Back Door Hack", price: 50, quantity: 0, infinite: true, icon: document.getElementById("back-door-hack-icon")},
   {name: "WiFi Cracker", price: 100, quantity: 0, infinite: false, bought: false, icon: document.getElementById("wifi-cracker-icon")},
   {name: "Password Cracker", price: 75, quantity: 0, infinite: false, bought: false, icon: document.getElementById("password-cracker-icon")},
   {name: "PHP Injector", price: 250, quantity: 0, infinite: false, bought: false, icon: document.getElementById("php-injector-icon")},
   {name: "Network Scanner", price: 125, quantity: 0, infinite: false, bought: false, icon: document.getElementById("network-scanner-icon")}
 ];
 
+// back door hack variables
+let moneyAmount = 5;
+let backDoorHackTimer = 5000;
+
 // the player wallet
-let wallet = 10000;
+let wallet = 50;
 
 // pausing
 let paused = false;

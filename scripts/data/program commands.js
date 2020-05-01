@@ -9,4 +9,11 @@ let consoleCommands = [
     output: ``
   }
 ];
+
+// php injector commands
+
+// network scanner commands
+
+// wifi cracker commands
+
 // password cracker commands

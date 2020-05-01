@@ -66,7 +66,7 @@ function buyItem(name) {
         // adding to the quantity
         shopItems[item].quantity += 1;
         // showing the icon on the header
-        shopItems[item].icon.style.display = "flex";
+        shopItems[item].icon.style.display = "inline-flex";
         // drawing the quantity
         quantityText.innerHTML = `${shopItems[item].quantity}`;
       }
@@ -76,9 +76,11 @@ function buyItem(name) {
         // removing money from the wallet
         wallet -= shopItems[item].price;
         // showing the item's icon on the desktop
-        shopItems[item].icon.style.display = "flex";
+        shopItems[item].icon.style.display = "inline-flex";
         // removing the item from the array
         shopItems.splice(item, 1);
+        // set bought to true
+        shopItems[item].bought = true;
         // redrawings
         displayShopItems();
       }
@@ -229,6 +231,22 @@ function update() {
       // if the newEmails variable is not equal to zero, show the newEmailContainer and show how many new emails there are.
       newEmailContainer.style.display = "flex";
       newEmailCount.innerHTML = `${newEmails}`;
+    }
+    // scrolling through the shopItems array
+    for(item in shopItems) {
+      // checking if the item is there
+      if(shopItems[item].name === "Back Door Hack") {
+        // checking the quantity of the back door hack
+        if(shopItems[item].quantity > 0) {
+          backDoorHackTimer -= 1;
+          moneyAmount = 5 * shopItems[item].quantity;
+        }
+      }
+    }
+    // checking if backDoorHackTimer has gone off
+    if(backDoorHackTimer <= 0) {
+      wallet += moneyAmount;
+      backDoorHackTimer = 5000;
     }
     // drawing the player wallet onto the shop header
     shopHeader.innerHTML = `Shop<p style="float: right;">Wallet: ${wallet}</p>`;
