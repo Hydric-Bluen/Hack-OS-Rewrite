@@ -1,40 +1,51 @@
+////// TODO: OPTIMIZE THE HELL OUT OF THIS FILE
+
 // pause menu variables
-const pauseMenu           = document.getElementById('pause-menu');
-const pauseMenuIcon       = document.getElementById('pause-menu-icon');
+const pauseMenu              = document.getElementById('pause-menu');
+const pauseMenuIcon          = document.getElementById('pause-menu-icon');
 
 // console window variables
-const consoleWindow       = document.getElementById('console-window');
-const consoleWindowIcon   = document.getElementById('console-window-icon');
-const consoleWindowInput  = document.getElementById('command-line-input');
-const consoleWindowOutput = document.getElementById('command-line-output');
+const consoleWindow          = document.getElementById('console-window');
+const consoleWindowInput     = document.getElementById('command-line-input');
+const consoleWindowIcon      = document.getElementById('console-window-icon');
+const consoleWindowOutput    = document.getElementById('command-line-output');
 
 // email window variables
-const emailWindow         = document.getElementById('email-window');
-const emailWindowIcon     = document.getElementById('email-window-icon');
-const emailWindowBody     = document.getElementById('email-window-body-table');
+const emailWindow            = document.getElementById('email-window');
+const emailWindowIcon        = document.getElementById('email-window-icon');
+const emailWindowBody        = document.getElementById('email-window-body-table');
 
 // specific email variables
-const specificEmail       = document.getElementById('specific-email');
-const specificEmailAuthor = document.getElementById('author');
-const specificEmailTopic  = document.getElementById('topic');
-const specificEmailBody   = document.getElementById('body-content');
+const specificEmailTopic     = document.getElementById('topic');
+const specificEmailAuthor    = document.getElementById('author');
+const specificEmailBody      = document.getElementById('body-content');
+const specificEmail          = document.getElementById('specific-email');
 
 // new email count notification
-const newEmailContainer   = document.getElementById('new-emails');
-const newEmailCount       = document.getElementById('new-email-count');
+const newEmailContainer      = document.getElementById('new-emails');
+const newEmailCount          = document.getElementById('new-email-count');
 
 // shop window
-const shopWindow          = document.getElementById('shop-window');
-const shopHeader          = document.getElementById('shop-header');
-const shopWindowIcon      = document.getElementById('shop-window-icon');
-const shopWindowTable     = document.getElementById('shop-window-table');
+const shopWindow             = document.getElementById('shop-window');
+const shopHeader             = document.getElementById('shop-header');
+const shopWindowIcon         = document.getElementById('shop-window-icon');
+const shopWindowTable        = document.getElementById('shop-window-table');
 
 // back door hack
-const quantityText        = document.getElementById('quantity');
+const quantityText           = document.getElementById('quantity');
+
+// day job variables
+const specificDayJobName     = document.getElementById('day-job-name');
+const dayJobIcon             = document.getElementById('day-jobs-icon');
+const dayJobWindow           = document.getElementById('day-jobs-window');
+const dayJobDescription      = document.getElementById('day-job-description');
+const dayJobBody             = document.getElementById('day-jobs-window-body');
+const dayJobTable            = document.getElementById('day-jobs-window-table');
+const specificDayJobWindow   = document.getElementById('specific-day-job-window');
 
 // Audio
-const clickAudio          = document.getElementById('click');
-const notificationAudio   = document.getElementById('notification');
+const clickAudio             = document.getElementById('click');
+const notificationAudio      = document.getElementById('notification');
 
 // config things
 let pauseMenuOpen     = false;
@@ -42,6 +53,7 @@ let consoleWindowOpen = false;
 let emailWindowOpen   = false;
 let specificEmailOpen = false;
 let shopWindowOpen    = false;
+let dayJobWindowOpen = false;
 
 // timers
 let emailTimer = Math.floor(Math.random() * 5000);
@@ -65,6 +77,14 @@ let shopItems = [
   {name: "PHP Injector", price: 250, quantity: 0, infinite: false, bought: false, icon: document.getElementById("php-injector-icon")},
   {name: "Network Scanner", price: 125, quantity: 0, infinite: false, bought: false, icon: document.getElementById("network-scanner-icon")}
 ];
+
+// dayJobs variables
+let dayJobs = [
+  {name: "Mow Lawns", duration: 2000, description: "Mow the lawns of your neighbours and have them pay you!", pay: 25},
+  {name: "Deliver Newspapers", duration: 4000, description: "Deliver newspapers around the entire neighbourhood!", pay: 50},
+  {name: "Washing Cars", duration: 3500, description: "Wash the cars at a local gas station, this pays well for you hard labour.", pay: 75}
+];
+let dayJobsCooldown = 15000;
 
 // back door hack variables
 let moneyAmount = 5;

@@ -1,3 +1,18 @@
+// opening the day jobs window
+dayJobIcon.addEventListener('click', () => {
+  switch(dayJobWindowOpen) {
+    case true:
+      dayJobWindow.style.display = "none";
+      dayJobWindowOpen = false;
+      specificDayJobWindow.style.display = "none";
+    break;
+    case false:
+      dayJobWindow.style.display = "block";
+      dayJobWindowOpen = true;
+    break;
+  }
+});
+
 // opening & closing the email window
 emailWindowIcon.addEventListener('click', () => {
   switch(emailWindowOpen) {

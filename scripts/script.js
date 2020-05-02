@@ -184,6 +184,29 @@ consoleWindow.addEventListener('keydown', (event) => {
   }
 });
 
+// display day jobs
+function displayDayJobs() {
+  // getting all of the jobs inside of the dayJobs array
+  for(job in dayJobs) {
+    // displaying all of the jobs to the dayJobTable
+    dayJobTable.innerHTML += `<tr><td class="item" onclick="displaySpecificDayJob('${dayJobs[job].name}')"><p>${dayJobs[job].name}</p></td></tr>`;
+  }
+}
+
+// displaying the specific dayjob that the player clicked on
+function displaySpecificDayJob(name) {
+  // scrolling through the dayJobs array
+  for(job in dayJobs) {
+    // checking if the name exists in the directory
+    if(dayJobs[job].name === name) {
+      // display all of the information we need do.
+      specificDayJobName.innerHTML = `${name}`;
+      dayJobDescription.innerHTML = `${dayJobs[job].description}<div></div>`;
+      specificDayJobWindow.style.display = "block";
+    }
+  }
+}
+
 // .toLowerCase()
 function toLowerCase(value) {
   return value.toLowerCase();
@@ -254,6 +277,9 @@ function update() {
   window.requestAnimationFrame(update);
 }
 
-displayShopItems();
+window.onload = function() {
+  displayShopItems();
+  displayDayJobs();
+}
 
 window.requestAnimationFrame(update);
