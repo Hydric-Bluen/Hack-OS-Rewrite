@@ -119,12 +119,27 @@
       </div>
     </div>
     <!-- Pause Menu -->
-    <div class="window" id="pause-menu">
-      <header>
-        <h5>Paused</h5>
-      </header>
-      <div class="body-flex-column">
-        <button class="stretch-button" type="button" onclick="quitGame()">Quit</button>
+    <div class="body-flex-row">
+      <div class="window" id="pause-menu">
+        <header>
+          <h5>Paused</h5>
+        </header>
+        <div class="body-flex-column">
+          <button class="stretch-button" type="button" onclick="showOptionsWindow()">Options</button>
+          <button class="stretch-button" type="button" onclick="quitGame()">Quit</button>
+        </div>
+      </div>
+      <!--  Options Menu -->
+      <div class="window" id="options-menu">
+        <header>
+          <h5>Options</h5>
+        </header>
+        <div class="body">
+          <div class="body-flex-row" style="position: relative; width: 32vw;">
+            <p>Audio Volume</p>
+            <input style="text-align: center; position: absolute; right: 0%; margin-right: 10vw; width: 32px;" type="text" id="volume-adjuster" />
+          </div>
+        </div>
       </div>
     </div>
     <!-- Audio -->

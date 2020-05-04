@@ -125,6 +125,15 @@ img:hover {
   transform: translate(-50%, -50%);
 }
 
+.flex-table-cell {
+  display: flex;
+  flex-direction: row;
+}
+
+#pause-menu .body-flex-column .stretch-button {
+  margin-bottom: 6px;
+}
+
 #back-door-hack-icon {
   display: inline-flex;
   align-items: center;
@@ -171,6 +180,10 @@ input {
   width: 22vw;
   border: solid medium black;
   padding: 2px;
+}
+
+input:hover {
+  cursor: pointer;
 }
 
 button {

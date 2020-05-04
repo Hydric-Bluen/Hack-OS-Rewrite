@@ -79,6 +79,8 @@ window.addEventListener('keydown', (event) => {
       if(pauseMenuOpen) {
         pauseMenu.style.display = "none";
         pauseMenuOpen = false;
+        optionsMenuOpen = false;
+        optionsMenu.style.display = "none";
         paused = false;
         break;
       } else {
@@ -89,6 +91,23 @@ window.addEventListener('keydown', (event) => {
       }
   }
 });
+
+// opening the options window
+function showOptionsWindow() {
+  if(optionsMenuOpen) {
+    optionsMenu.style.display = 'none';
+    optionsMenuOpen = false;
+  } else {
+    optionsMenu.style.display = "block";
+    optionsMenuOpen = true;
+  }
+}
+
+// quitting the game
+function quitGame() {
+  window.close();
+}
+
 
 // playing a click sound whenever the player clicks their mouse button
 window.addEventListener('click', () => {

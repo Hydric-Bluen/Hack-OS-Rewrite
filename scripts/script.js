@@ -244,15 +244,15 @@ function toUpperCase(value) {
   return value.toUpperCase();
 }
 
-// quitting the game
-function quitGame() {
-  window.close();
-}
-
 // main game loop
 function update() {
+  // updating audio levels
+  clickAudio.volume = volume;
+  notificationAudio.volume = volume;
   // checking if the game is paused
   if(!paused) {
+    // updating audio levels
+    
     // checking if the emailCount is below the email cap
     if(emailCount < maxEmails) {
       // lowering the timer
@@ -327,7 +327,17 @@ function update() {
   window.requestAnimationFrame(update);
 }
 
+// checking if the enter key has been pressed inside of the volume adjuster input
+window.addEventListener('keydown', (event) => {
+  switch(event.keyCode) {
+    case enter:
+      volume = volumeAdjuster.value;
+    break;
+  }
+});
+
 window.addEventListener('load', () => {
+  volumeAdjuster.value = volume.toString();
   displayShopItems();
   displayDayJobs();
 });

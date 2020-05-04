@@ -44,6 +44,10 @@ const dayJobBody             = document.getElementById('day-jobs-window-body');
 const dayJobTable            = document.getElementById('day-jobs-window-table');
 const specificDayJobWindow   = document.getElementById('specific-day-job-window');
 
+// options menu variables
+const optionsMenu            = document.getElementById('options-menu');
+const volumeAdjuster         = document.getElementById('volume-adjuster');
+
 // Audio
 const clickAudio             = document.getElementById('click');
 const notificationAudio      = document.getElementById('notification');
@@ -54,7 +58,8 @@ let consoleWindowOpen = false;
 let emailWindowOpen   = false;
 let specificEmailOpen = false;
 let shopWindowOpen    = false;
-let dayJobWindowOpen = false;
+let dayJobWindowOpen  = false;
+let optionsMenuOpen   = false;
 
 // timers
 let emailTimer = Math.floor(Math.random() * 5000);
@@ -97,6 +102,9 @@ let backDoorHackTimer = 1500;
 
 // the player wallet
 let wallet = 50;
+
+// audio volume
+let volume = 1;
 
 // pausing
 let paused = false;
