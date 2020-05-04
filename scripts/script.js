@@ -201,10 +201,37 @@ function displaySpecificDayJob(name) {
     if(dayJobs[job].name === name) {
       // display all of the information we need do.
       specificDayJobName.innerHTML = `${name}`;
-      dayJobDescription.innerHTML = `${dayJobs[job].description}<div></div>`;
+      dayJobDescription.innerHTML = `${dayJobs[job].description}<button type="button" onclick="acceptDayJob('${name}', ${dayJobs[job].duration})">Take</button>`;
       specificDayJobWindow.style.display = "block";
     }
   }
+}
+
+// accepting a day job
+function acceptDayJob(name, duration) {
+  // scroll through the dayJobs array
+  for(job in dayJobs) {
+    // check if the dayJob exists in the array
+    if(dayJobs[job].name === name && !jobFinished) {
+      // reset cooldown timer
+      dayJobsCooldown = 15000;
+      doingJob = true;
+      pay = dayJobs[job].pay;
+      // TODO: time lapse effect
+      doJob(duration); 
+    }
+  }
+}
+
+function doJob(duration) {
+  // check if doingJob is equal to true
+  if(!doingJob) return;
+  // set the overlay display to block;
+  overlay.style.display = "block";
+  // setup a countdown system
+  jobCountdown = duration;
+  // subtract from the countdown
+  jobCountdown -= 1;
 }
 
 // .toLowerCase()
@@ -271,15 +298,38 @@ function update() {
       wallet += moneyAmount;
       backDoorHackTimer = 5000;
     }
+    // checking if doingJob is true
+    if(doingJob) {
+      if(jobCountdown > 0) {
+        // begin the countdown
+        jobCountdown -= 1;
+      }
+      if(jobCountdown <= 0) {
+        jobCountdown = 0;
+        overlay.style.display = "none";
+        doingJob = false;
+        wallet += pay;
+        pay = 0;
+        jobFinished = true;
+      }  
+    }
+    if(jobFinished) {
+      dayJobsCooldown -= 1;
+      if(dayJobsCooldown <= 0) {
+        dayJobsCooldown = 2500;
+        jobFinished = false;
+      }
+    }
     // drawing the player wallet onto the shop header
     shopHeader.innerHTML = `Shop<p style="float: right;">Wallet: ${wallet}</p>`;
   }
+  // a simple check to see if the doingJob and jobCountdown variables are good
   window.requestAnimationFrame(update);
 }
 
-window.onload = function() {
+window.addEventListener('load', () => {
   displayShopItems();
   displayDayJobs();
-}
+});
 
 window.requestAnimationFrame(update);

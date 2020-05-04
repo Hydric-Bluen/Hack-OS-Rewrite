@@ -10,7 +10,18 @@
 }
 
 body {
+  overflow: hidden;
   background-color: lightgrey;
+}
+
+#overlay {
+  z-index: 100;
+  opacity: .5;
+  background-color: #191919;
+  display: none;
+  position: absolute;
+  width: 1280px;
+  height: 720px;
 }
 
 .topbar {

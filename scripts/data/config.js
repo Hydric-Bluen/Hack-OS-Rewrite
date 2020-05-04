@@ -35,6 +35,7 @@ const shopWindowTable        = document.getElementById('shop-window-table');
 const quantityText           = document.getElementById('quantity');
 
 // day job variables
+const overlay                = document.getElementById('overlay');
 const specificDayJobName     = document.getElementById('day-job-name');
 const dayJobIcon             = document.getElementById('day-jobs-icon');
 const dayJobWindow           = document.getElementById('day-jobs-window');
@@ -80,15 +81,19 @@ let shopItems = [
 
 // dayJobs variables
 let dayJobs = [
-  {name: "Mow Lawns", duration: 2000, description: "Mow the lawns of your neighbours and have them pay you!", pay: 25},
-  {name: "Deliver Newspapers", duration: 4000, description: "Deliver newspapers around the entire neighbourhood!", pay: 50},
-  {name: "Washing Cars", duration: 3500, description: "Wash the cars at a local gas station, this pays well for you hard labour.", pay: 75}
+  {name: "Mow Lawns", duration: 500, description: "Mow the lawns of your neighbours and have them pay you!", pay: 25},
+  {name: "Deliver Newspapers", duration: 1000, description: "Deliver newspapers around the entire neighbourhood!", pay: 50},
+  {name: "Washing Cars", duration: 750, description: "Wash the cars at a local gas station, this pays well for you hard labour.", pay: 75}
 ];
-let dayJobsCooldown = 15000;
+let pay = 0;
+let dayJobsCooldown = 2500;
+let doingJob = false;
+let jobCountdown = 0;
+let jobFinished = false;
 
 // back door hack variables
 let moneyAmount = 5;
-let backDoorHackTimer = 5000;
+let backDoorHackTimer = 1500;
 
 // the player wallet
 let wallet = 50;
