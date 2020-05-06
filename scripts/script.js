@@ -234,6 +234,27 @@ function doJob(duration) {
   jobCountdown -= 1;
 }
 
+function connectToWiFi(name) {
+  for(wifi in publicDomains) {
+    if(publicDomains[wifi].name === name) {
+      wifiConnectedTo = publicDomains[wifi].name;
+      connectedToWifi = true;
+    }
+  }
+}
+
+function displayPublicDomain() {
+  for(wifi in publicDomains) {
+    publicDomainDropDownBody.innerHTML += `<tr><td class="item" onclick="connectToWiFi('${publicDomains[wifi].name}')"><p>${publicDomains[wifi].name}</p></td></tr>`;
+  }
+}
+
+function displayWPAOne() {
+  for(wifi in wpaOnes) {
+    wpaOneDropDownBody.innerHTML += `<tr><td class="item"><p>${wpaOnes[wifi].name}</p></td></tr>`;
+  }
+}
+
 // .toLowerCase()
 function toLowerCase(value) {
   return value.toLowerCase();
@@ -251,8 +272,13 @@ function update() {
   notificationAudio.volume = volume;
   // checking if the game is paused
   if(!paused) {
-    // updating audio levels
-    
+    // updating the wifi connection ui
+    if(connectedToWifi) {
+      currentlyConnectedWifi.innerHTML = `${wifiConnectedTo}`;
+    } else if(!connectedToWifi) {
+      currentlyConnectedWifi.innerHTML = `Not Connected`;
+    }
+
     // checking if the emailCount is below the email cap
     if(emailCount < maxEmails) {
       // lowering the timer
@@ -340,6 +366,9 @@ window.addEventListener('load', () => {
   volumeAdjuster.value = volume.toString();
   displayShopItems();
   displayDayJobs();
+  displayPublicDomain();
+  displayWPAOne();
+  displayWPATwo();
 });
 
 window.requestAnimationFrame(update);

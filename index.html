@@ -19,10 +19,16 @@
           <img id="backdoorhack-icon" alt="placeholder.png" src="res/images/BackDoorHackIcon.png" />
           <label id="quantity"></label>
         </div>
-        <div class="icon">
-          <img id="day-jobs-icon" alt="DayJobsIcon.png" src="res/images/DayJobsIcon.png" />
-          <label>Day Jobs</label>
-        <div>
+        <div class="body-flex-row">
+          <div class="icon">
+            <img id="day-jobs-icon" alt="DayJobsIcon.png" src="res/images/DayJobsIcon.png" />
+            <label>Day Jobs</label>
+          </div>
+          <div class="icon">
+            <img id="wifi-connections-icon" alt="wificonnectionswindowicon.png" src="res/images/WiFiConnectionsIcon.png" />
+            <label>WiFi</label>
+          </div>
+        </div>
       </div>
     </header>
     <!-- Desktop Icons -->
@@ -55,6 +61,35 @@
       <div id="network-scanner-icon" class="icon-hidden">
         <img id="network-scanner-icon" alt="placeholder.png" src="res/images/NetworkScannerIcon.png" />
         <label>Network Scanner</label>
+      </div>
+    </div>
+    <!-- WiFi Connections Window -->
+    <div class="body-flex-row">
+      <div class="window" id="wifi-connections-window">
+        <header><h5>WiFi Connections<p style="float: right;" id="currently-connected-wifi"></p></h5></header>
+        <div class="body">
+          <button style="margin-bottom: 4px;" class="stretch-button" onclick="showDropDown('public-domain')">Public Domain</button>
+          <button style="margin-bottom: 4px;" class="stretch-button" onclick="showDropDown('wpa-1')">WPA 1</button>
+          <button style="margin-bottom: 4px;" class="stretch-button" onclick="showDropDown('wpa-2')">WPA 2</button>
+        </div>
+      </div>
+      <div class="window" id="public-domain-drop-down-menu">
+        <div class="body">
+          <table>
+            <tbody id="public-domain-drop-down-menu-body">
+  
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="window" id="wpa-1-drop-down-menu">
+        <div id="scroll-overflow" class="body">
+          <table>
+            <tbody id="wpa-1-drop-down-menu-body">
+
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <!-- Console Window -->
@@ -125,6 +160,8 @@
           <h5>Paused</h5>
         </header>
         <div class="body-flex-column">
+          <!-- <button class="stretch-button" type="button" onclick="saving = true;">Save</button>
+          <button class="stretch-button" type="button" onclick="loading = true;">Load</button> -->
           <button class="stretch-button" type="button" onclick="showOptionsWindow()">Options</button>
           <button class="stretch-button" type="button" onclick="quitGame()">Quit</button>
         </div>

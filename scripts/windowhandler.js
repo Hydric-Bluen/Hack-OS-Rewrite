@@ -1,3 +1,71 @@
+// opening the drop down menus
+function showDropDown(value) {
+  switch(value) {
+    case 'public-domain':
+      switch(publicDomainDropDownOpen) {
+        case true:
+          publicDomainDropDown.style.display = "none";
+          publicDomainDropDownOpen = false;
+        break;
+        case false:
+          publicDomainDropDown.style.display = "block";
+          wpaOneDropDown.style.display = "none";
+          wpaTwoDropDown.style.display = "none";
+          wpaOneDropDownOpen = false;
+          wpaTwoDropDownOpen = false;
+          publicDomainDropDownOpen = true;
+        break;
+      }
+    break;
+    case 'wpa-1':
+      switch(wpaOneDropDownOpen) {
+        case true:
+          wpaOneDropDown.style.display = "none";
+          wpaOneDropDownOpen = false;
+        break;
+        case false:
+          wpaOneDropDown.style.display = "block";
+          publicDomainDropDown.style.display = "none";
+          wpaTwoDropDown.style.display = "none";
+          wpaOneDropDownOpen = true;
+          publicDomainDropDown = false;
+          wpaTwoDropDownOpen = false;
+        break;
+      }
+    break;
+    case 'wpa-2':
+      switch(wpaTwoDropDownOpen) {
+        case true:
+          wpaTwoDropDown.style.display = "none";
+          wpaTwoDropDownOpen = false;
+        break;
+        case false:
+          wpaTwoDropDown.style.display = "block";
+          wpaOneDropDown.style.display = "none";
+          publicDomainDropDown.style.display = "none";
+          publicDomainDropDownOpen = false;
+          wpaOneDropDownOpen = false;
+          wpaTwoDropDownOpen = true;
+        break;
+      }
+    break;
+  }
+}
+
+// opening the wifi connections window
+wifiConnectionsIcon.addEventListener('click', () => {
+  switch(wifiConnectionsOpen) {
+    case true:
+      wifiConnectionsWindow.style.display = "none";
+      wifiConnectionsOpen = false;
+    break;
+    case false:
+      wifiConnectionsWindow.style.display = "block";
+      wifiConnectionsOpen = true;
+    break;
+  }
+});
+
 // opening the day jobs window
 dayJobIcon.addEventListener('click', () => {
   switch(dayJobWindowOpen) {

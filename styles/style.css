@@ -83,8 +83,19 @@ img:hover {
   height: 38.5px;
 }
 
+#wifi-connections-icon {
+  width: 46.5px;
+  height: 36.5px;
+}
+
 #backdoorhack-icon:hover {
   cursor: default;
+}
+
+#scroll-overflow {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 34vh;
 }
 
 .body {

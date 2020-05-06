@@ -33,6 +33,7 @@ const shopWindowTable        = document.getElementById('shop-window-table');
 
 // back door hack
 const quantityText           = document.getElementById('quantity');
+const backDoorHackIcon       = document.getElementById('back-door-hack-icon');
 
 // day job variables
 const overlay                = document.getElementById('overlay');
@@ -44,6 +45,19 @@ const dayJobBody             = document.getElementById('day-jobs-window-body');
 const dayJobTable            = document.getElementById('day-jobs-window-table');
 const specificDayJobWindow   = document.getElementById('specific-day-job-window');
 
+// wifi connections window variables
+const wifiConnectionsIcon    = document.getElementById('wifi-connections-icon');
+const wifiConnectionsWindow  = document.getElementById('wifi-connections-window');
+const currentlyConnectedWifi = document.getElementById('currently-connected-wifi');
+
+const publicDomainDropDown     = document.getElementById('public-domain-drop-down-menu');
+const publicDomainDropDownBody = document.getElementById('public-domain-drop-down-menu-body');
+
+const wpaOneDropDown         = document.getElementById('wpa-1-drop-down-menu');
+const wpaOneDropDownBody     = document.getElementById('wpa-1-drop-down-menu-body');
+
+const wpaTwoDropDown         = document.getElementById('wpa-2-drop-down-menu');
+
 // options menu variables
 const optionsMenu            = document.getElementById('options-menu');
 const volumeAdjuster         = document.getElementById('volume-adjuster');
@@ -53,18 +67,56 @@ const clickAudio             = document.getElementById('click');
 const notificationAudio      = document.getElementById('notification');
 
 // config things
-let pauseMenuOpen     = false;
-let consoleWindowOpen = false;
-let emailWindowOpen   = false;
-let specificEmailOpen = false;
-let shopWindowOpen    = false;
-let dayJobWindowOpen  = false;
-let optionsMenuOpen   = false;
+let pauseMenuOpen       = false;
+let consoleWindowOpen   = false;
+let emailWindowOpen     = false;
+let specificEmailOpen   = false;
+let shopWindowOpen      = false;
+let dayJobWindowOpen    = false;
+let optionsMenuOpen     = false;
+let wifiConnectionsOpen = false;
+
+let publicDomainDropDownOpen = false;
+let wpaOneDropDownOpen       = false;
+let wpaTwoDropDownOpen       = false;
+
+let connectedToWifi = false;
+let wifiConnectedTo = "";
+
+// wifi's
+let publicDomains = [
+  {"name": "The LAN Before Time"},
+  {"name": "LAN Solo"},
+  {"name": "House LANister"},
+  {"name": "Winternet Is Coming"},
+  {"name": "The Promised LAN"}
+];
+
+let wpaOnes = [
+  {"name": "Nacho WiFi", "password": "*//5cwkep7"},
+  {"name": "Look Man Wires", "password": "7>hp*]bd%y"},
+  {"name": "Dimple Girl", "password": "@m7g585qy$"},
+  {"name": "Sex is not allowed in the office", "password": "u.@cg6p}h@"},
+  {"name": "Give me your number", "password": ">?*jw%8(&q"},
+  {"name": "FBI Surveillance Van # 594", "password": "*g6~*]sk%+"},
+  {"name": "Use this One Mom", "password": "hx`tz4=t7d"}
+];
 
 // timers
 let emailTimer = Math.floor(Math.random() * 5000);
 
 // emails
+let names = ['Unknownx', 'KingLucien', 'WarGang', 'Elfy', 'Nobody Special', 'Melie', 'Dadwick', 'Gabrijel'];
+
+let topics = ['Password Cracking', 'Creditcard Cracking', 'PHP Injection', 'WiFi Cracking', 'Computer Cracking'];
+
+let bodies = [
+  `Hi! I was wondering if you could do this thing for me?`,
+  `Hello there. I've heard you started hacking and I was wondering if you can do this job for me.`,
+];
+
+let prices = [100, 150, 200, 250, 50, 75, 25];
+
 let emails     = [];
 let maxEmails  = 10;
 let emailCount = 0;
