@@ -57,10 +57,16 @@ const wpaOneDropDown         = document.getElementById('wpa-1-drop-down-menu');
 const wpaOneDropDownBody     = document.getElementById('wpa-1-drop-down-menu-body');
 
 const wpaTwoDropDown         = document.getElementById('wpa-2-drop-down-menu');
+const wpaTwoDropDownBody     = document.getElementById('wpa-2-drop-down-menu-body');
 
 // options menu variables
 const optionsMenu            = document.getElementById('options-menu');
 const volumeAdjuster         = document.getElementById('volume-adjuster');
+
+// password input variables
+const passwordInputWindow    = document.getElementById('password-input-window');
+const passwordInputHeader    = document.getElementById('password-input-header');
+const passwordInput          = document.getElementById('password-input');
 
 // Audio
 const clickAudio             = document.getElementById('click');
@@ -75,6 +81,7 @@ let shopWindowOpen      = false;
 let dayJobWindowOpen    = false;
 let optionsMenuOpen     = false;
 let wifiConnectionsOpen = false;
+let passwordInputOpen   = false;
 
 let publicDomainDropDownOpen = false;
 let wpaOneDropDownOpen       = false;
@@ -101,12 +108,17 @@ let wpaOnes = [
   {"name": "FBI Surveillance Van # 594", "password": "*g6~*]sk%+"},
   {"name": "Use this One Mom", "password": "hx`tz4=t7d"}
 ];
+let wpaTwos = [
+  {"name": "Area 51 Test Site", "password": "FJM*PrLC&-H5=Vv-"},
+  {"name": "The Creep Next Door", "password": "Cw9Fn_+KaD36*EQB"},
+  {"name": "Life In The Local Fast Network", "password": "^aYhPU7V*MnnxRr5"}
+];
 
 // timers
 let emailTimer = Math.floor(Math.random() * 5000);
 
 // emails
-let names = ['Unknownx', 'KingLucien', 'WarGang', 'Elfy', 'Nobody Special', 'Melie', 'Dadwick', 'Gabrijel'];
+let names = ['Unknownx', 'KingLucien', 'WarGang', 'Elfy', 'Nobody Special', 'Melie', 'Dadwick', 'Gabrijel', 'Jarido12'];
 
 let topics = ['Password Cracking', 'Creditcard Cracking', 'PHP Injection', 'WiFi Cracking', 'Computer Cracking'];
 
@@ -155,8 +167,9 @@ let backDoorHackTimer = 1500;
 // the player wallet
 let wallet = 50;
 
-// audio volume
+// options stuff
 let volume = 1;
+let usingDark = false;
 
 // pausing
 let paused = false;

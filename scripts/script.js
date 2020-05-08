@@ -234,6 +234,44 @@ function doJob(duration) {
   jobCountdown -= 1;
 }
 
+// connecting to wifis
+passwordInput.addEventListener('keydown', (event) => {
+  switch(event.keyCode) {
+    case enter:
+      for(let i = 0; i < wpaOnes.length; i++) {
+        if(wpaOnes[i].password === passwordInput.value) {
+          connectedToWifi = true;
+          wifiConnectedTo = wpaOnes[i].name;
+          passwordInput.value = "";
+          break;
+        }
+      }
+      for(let i = 0; i < wpaTwos.length; i++) {
+        if(wpaTwos[i].password === passwordInput.value) {
+          connectedToWifi = true;
+          wifiConnectedTo = wpaTwos[i].name;
+          passwordInput.value = "";
+          break;
+        }
+      }
+    break;
+  }
+});
+
+function showPasswordInput(name, password) {
+  switch(passwordInputOpen) {
+    case true:
+      passwordInputWindow.style.display = "none";
+      passwordInputOpen = false;
+    break;
+    case false:
+      passwordInputWindow.style.display = "block";
+      passwordInputOpen = true;
+      passwordInputHeader.innerHTML = `Connecting to: ${name}`;
+    break;
+  }
+}
+
 function connectToWiFi(name) {
   for(wifi in publicDomains) {
     if(publicDomains[wifi].name === name) {
@@ -243,15 +281,27 @@ function connectToWiFi(name) {
   }
 }
 
-function displayPublicDomain() {
+function displayWiFis() {
   for(wifi in publicDomains) {
     publicDomainDropDownBody.innerHTML += `<tr><td class="item" onclick="connectToWiFi('${publicDomains[wifi].name}')"><p>${publicDomains[wifi].name}</p></td></tr>`;
   }
+  for(wifi in wpaOnes) {
+    wpaOneDropDownBody.innerHTML += `<tr><td onclick="showPasswordInput('${wpaOnes[wifi].name}', '${wpaOnes[wifi].password}')" class="item"><p>${wpaOnes[wifi].name}</p></td></tr>`;
+  }
+  for(wifi in wpaTwos) {
+    wpaTwoDropDownBody.innerHTML += `<tr><td onclick="showPasswordInput('${wpaTwos[wifi].name}', '${wpaTwos[wifi].password}')" class="item"><p>${wpaTwos[wifi].name}</p></td></tr>`;
+  }
 }
 
-function displayWPAOne() {
-  for(wifi in wpaOnes) {
-    wpaOneDropDownBody.innerHTML += `<tr><td class="item"><p>${wpaOnes[wifi].name}</p></td></tr>`;
+// enabling and disabling dark mode
+function enableDarkMode() {
+  switch(usingDark) {
+    case true:
+      usingDark = false;
+    break;
+    case false:
+      usingDark = true;
+    break;
   }
 }
 
@@ -267,6 +317,14 @@ function toUpperCase(value) {
 
 // main game loop
 function update() {
+  // checking if dark mode is being used
+  if(usingDark) {
+    document.body.style.backgroundColor = "#191919";
+    document.body.style.color = "white";
+  } else {
+    document.body.style.backgroundColor = "lightgrey";
+    document.body.style.color = "black";
+  }
   // updating audio levels
   clickAudio.volume = volume;
   notificationAudio.volume = volume;
@@ -366,9 +424,7 @@ window.addEventListener('load', () => {
   volumeAdjuster.value = volume.toString();
   displayShopItems();
   displayDayJobs();
-  displayPublicDomain();
-  displayWPAOne();
-  displayWPATwo();
+  displayWiFis();
 });
 
 window.requestAnimationFrame(update);

@@ -73,22 +73,39 @@
           <button style="margin-bottom: 4px;" class="stretch-button" onclick="showDropDown('wpa-2')">WPA 2</button>
         </div>
       </div>
-      <div class="window" id="public-domain-drop-down-menu">
-        <div class="body">
-          <table>
-            <tbody id="public-domain-drop-down-menu-body">
+      <div>
+        <div class="window" id="public-domain-drop-down-menu">
+          <div class="body">
+            <table>
+              <tbody id="public-domain-drop-down-menu-body">
+    
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="window" id="wpa-1-drop-down-menu">
+          <div id="scroll-overflow" class="body">
+            <table>
+              <tbody id="wpa-1-drop-down-menu-body">
   
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="window" id='wpa-2-drop-down-menu'>
+          <div class="body">
+            <table>
+              <tbody id="wpa-2-drop-down-menu-body">
+  
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div class="window" id="wpa-1-drop-down-menu">
-        <div id="scroll-overflow" class="body">
-          <table>
-            <tbody id="wpa-1-drop-down-menu-body">
-
-            </tbody>
-          </table>
+      <div class="window" id="password-input-window">
+        <header><h5 id="password-input-header"></h5></header>
+        <div class="body">
+          <input type="text" id="password-input" placeholder="Enter Password" />
         </div>
       </div>
     </div>
@@ -172,6 +189,15 @@
           <h5>Options</h5>
         </header>
         <div class="body">
+          <div class="body-flex-row" style="position: relative; width: 32vw;">
+            <p>Dark Mode</p>
+            <div id="dark-mode-slider">
+              <label class="switch">
+                <input onclick="enableDarkMode()" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
           <div class="body-flex-row" style="position: relative; width: 32vw;">
             <p>Audio Volume</p>
             <input style="text-align: center; position: absolute; right: 0%; margin-right: 10vw; width: 32px;" type="text" id="volume-adjuster" />

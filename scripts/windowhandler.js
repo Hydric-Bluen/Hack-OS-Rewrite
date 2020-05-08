@@ -28,7 +28,7 @@ function showDropDown(value) {
           publicDomainDropDown.style.display = "none";
           wpaTwoDropDown.style.display = "none";
           wpaOneDropDownOpen = true;
-          publicDomainDropDown = false;
+          publicDomainDropDownOpen = false;
           wpaTwoDropDownOpen = false;
         break;
       }
@@ -57,7 +57,15 @@ wifiConnectionsIcon.addEventListener('click', () => {
   switch(wifiConnectionsOpen) {
     case true:
       wifiConnectionsWindow.style.display = "none";
+      publicDomainDropDown.style.display = "none";
+      wpaOneDropDown.style.display = "none";
+      wpaTwoDropDown.style.display = "none";
+      passwordInputWindow.style.display = "none";
       wifiConnectionsOpen = false;
+      passwordInputOpen = false;
+      publicDomainDropDownOpen = false;
+      wpaOneDropDownOpen = false;
+      wpaTwoDropDownOpen = false;
     break;
     case false:
       wifiConnectionsWindow.style.display = "block";
