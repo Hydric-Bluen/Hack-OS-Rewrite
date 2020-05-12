@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -46,8 +46,8 @@
         <img id="shop-window-icon" alt="ShopIcon.png" src='res/images/ShopIcon.png' />
         <label>Shop</label>
       </div>
-      <div id="wifi-cracker-icon" class="icon-hidden">
-        <img alt="placeholder.png" src="res/images/WiFiCrackerIcon.png" />
+      <div id="wpa-1-cracker-icon-container" class="icon-hidden">
+        <img id="wpa-1-cracker-icon" alt="placeholder.png" src="res/images/WiFiCrackerIcon.png" />
         <label>WiFi Cracker</label>
       </div>
       <div id="password-cracker-icon" class="icon-hidden">
@@ -168,6 +168,16 @@
         <div class="body">
           <p id="day-job-description"></p>
         </div>
+      </div>
+    </div>
+    <!-- WPA-1 Cracker -->
+    <div class="window" id="wpa-1-cracker-window">
+      <header>
+        <h5>WPA-1 Cracker</h5>
+      </header>
+      <div class="body">
+        <div style="height: 22.5vh;" class="body-border"><p id="wpa-1-output"></p></div>
+        <input style="margin-top: 5px;" type="text" id="wpa-1-input" placeholder="Press enter to submit a command" />
       </div>
     </div>
     <!-- Pause Menu -->

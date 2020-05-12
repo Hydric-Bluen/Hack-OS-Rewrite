@@ -68,6 +68,12 @@ const passwordInputWindow    = document.getElementById('password-input-window');
 const passwordInputHeader    = document.getElementById('password-input-header');
 const passwordInput          = document.getElementById('password-input');
 
+// WPA One Cracker Variables
+const wpaOneCrackerIcon      = document.getElementById('wpa-1-cracker-icon');
+const wpaOneCrackerWindow    = document.getElementById('wpa-1-cracker-window');
+const wpaOneCrackerOutput    = document.getElementById('wpa-1-output');
+const wpaOneCrackerInput     = document.getElementById('wpa-1-input');
+
 // Audio
 const clickAudio             = document.getElementById('click');
 const notificationAudio      = document.getElementById('notification');
@@ -82,6 +88,7 @@ let dayJobWindowOpen    = false;
 let optionsMenuOpen     = false;
 let wifiConnectionsOpen = false;
 let passwordInputOpen   = false;
+let wpaOneCrackerOpen   = false;
 
 let publicDomainDropDownOpen = false;
 let wpaOneDropDownOpen       = false;
@@ -99,7 +106,7 @@ let publicDomains = [
   {"name": "The Promised LAN"}
 ];
 
-let wpaOnes = [
+const wpaOnes = [
   {"name": "Nacho WiFi", "password": "*//5cwkep7"},
   {"name": "Look Man Wires", "password": "7>hp*]bd%y"},
   {"name": "Dimple Girl", "password": "@m7g585qy$"},
@@ -108,7 +115,8 @@ let wpaOnes = [
   {"name": "FBI Surveillance Van # 594", "password": "*g6~*]sk%+"},
   {"name": "Use this One Mom", "password": "hx`tz4=t7d"}
 ];
-let wpaTwos = [
+
+const wpaTwos = [
   {"name": "Area 51 Test Site", "password": "FJM*PrLC&-H5=Vv-"},
   {"name": "The Creep Next Door", "password": "Cw9Fn_+KaD36*EQB"},
   {"name": "Life In The Local Fast Network", "password": "^aYhPU7V*MnnxRr5"}
@@ -118,11 +126,11 @@ let wpaTwos = [
 let emailTimer = Math.floor(Math.random() * 5000);
 
 // emails
-let names = ['Unknownx', 'KingLucien', 'WarGang', 'Elfy', 'Nobody Special', 'Melie', 'Dadwick', 'Gabrijel', 'Jarido12'];
+const names = ['Unknownx', 'KingLucien', 'WarGang', 'Elfy', 'Nobody Special', 'Melie', 'Dadwick', 'Gabrijel', 'Jarido12', 'Marnie'];
 
-let topics = ['Password Cracking', 'Creditcard Cracking', 'PHP Injection', 'WiFi Cracking', 'Computer Cracking'];
+const topics = ['Password Cracking', 'Creditcard Cracking', 'PHP Injection', 'WiFi Cracking', 'Computer Cracking'];
 
-let bodies = [
+const bodies = [
   `Hi! I was wondering if you could do this thing for me?`,
   `Hello there. I've heard you started hacking and I was wondering if you can do this job for me.`,
 ];
@@ -139,10 +147,16 @@ let acceptedEmails     = [];
 let maxAcceptedEmails  = 5;
 let acceptedEmailCount = 0;
 
+// wifi countdown variables
+const defaultWPAOneCountdown = 500;
+let WPAOneCountdown = defaultWPAOneCountdown;
+const defaultWPATwoCountdown = 1000;
+let WPATwoCountdown = defaultWPATwoCountdown;
+
 // a bunch of shop items
 let shopItems = [
   {name: "Back Door Hack", price: 50, quantity: 0, infinite: true, icon: document.getElementById("back-door-hack-icon")},
-  {name: "WiFi Cracker", price: 100, quantity: 0, infinite: false, bought: false, icon: document.getElementById("wifi-cracker-icon")},
+  {name: "WPA-1 Cracker", price: 100, quantity: 0, infinite: false, bought: false, icon: document.getElementById("wpa-1-cracker-icon-container")},
   {name: "Password Cracker", price: 75, quantity: 0, infinite: false, bought: false, icon: document.getElementById("password-cracker-icon")},
   {name: "PHP Injector", price: 250, quantity: 0, infinite: false, bought: false, icon: document.getElementById("php-injector-icon")},
   {name: "Network Scanner", price: 125, quantity: 0, infinite: false, bought: false, icon: document.getElementById("network-scanner-icon")}
@@ -160,12 +174,17 @@ let doingJob = false;
 let jobCountdown = 0;
 let jobFinished = false;
 
+let crackingWPAOne = false;
+let finishedCrackingWPAOne = false;
+let crackingWPATwo = false;
+let finishedCrackingWPATwo = false;
+
 // back door hack variables
 let moneyAmount = 5;
 let backDoorHackTimer = 1500;
 
 // the player wallet
-let wallet = 50;
+let wallet = 10000;
 
 // options stuff
 let volume = 1;

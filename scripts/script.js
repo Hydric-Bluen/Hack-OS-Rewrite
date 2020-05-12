@@ -411,8 +411,67 @@ function update() {
   window.requestAnimationFrame(update);
 }
 
+// begin the cracking process
+function beginCracking(type, name) {
+  switch(type) {
+    case 'wpa-1':
+      WPAOneCountdown--;
+      if(WPAOneCountdown <= 0) {
+        for(wifi in wpaOnes) {
+          if(wpaOnes[wifi].name === name) {
+            wpaOneCrackerOutput.innerHTML = `The password to: ${name} is ${wpaOnes[wifi].password}`;
+            window.cancelAnimationFrame(beginCracking);
+            break;
+          }
+        }
+        WPAOneCountdown = defaultWPAOneCountdown;
+      }
+    break;
+    case 'wpa-2':
+      WPATwoCountdown--;
+      if(WPATwoCountdown <= 0) {
+        for(wifi in wpaTwos) {
+          if(wpaTwos[wifi].name === name) {
+            wpaTwoCrackerOutput.innerHTML = `The password to: ${name} is ${wpaTwos[wifi].password}`;
+            window.cancelAnimationFrame(beginCracking);
+            break;
+          }
+        }
+      }
+    break;
+  }
+  window.requestAnimationFrame(beginCracking);
+}
+
+// running wifi cracking command uwu
+function crackWPAOne(name) {
+  for(let i = 0; i < wpaOnes.length; i++) {
+    if(wpaOnes[i].name === name) {
+      beginCracking('wpa-1', name);
+      break;
+    }
+  }
+}
+
+//// checking if the enter key has been pressed on the WPA Cracker inputs
+// WPA One Cracker
+wpaOneCrackerInput.addEventListener('keydown', (event) => {
+  switch(event.keyCode) {
+    case enter:
+      inputValue = wpaOneCrackerInput.value;
+      if(toLowerCase(inputValue.slice(0, 5)) === "crack") {
+        crackWPAOne(`${inputValue.slice(5, inputValue.length)}`);
+      } else if(toLowerCase(inputValue) === "help") {
+        wpaOneCrackerOutput.innerHTML = wpaOneCrackerCommands[0].output;
+      } else if(toLowerCase(inputValue) === "clear") {
+        wpaOneCrackerOutput.innerHTML = wpaOneCrackerCommands[1].output;
+      }
+    break;
+  }
+});
+
 // checking if the enter key has been pressed inside of the volume adjuster input
-window.addEventListener('keydown', (event) => {
+volumeAdjuster.addEventListener('keydown', (event) => {
   switch(event.keyCode) {
     case enter:
       volume = volumeAdjuster.value;
@@ -427,4 +486,5 @@ window.addEventListener('load', () => {
   displayWiFis();
 });
 
+window.requestAnimationFrame(beginCracking);
 window.requestAnimationFrame(update);

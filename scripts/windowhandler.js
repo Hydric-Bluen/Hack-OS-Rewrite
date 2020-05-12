@@ -1,3 +1,17 @@
+// opening the wpa 1 wifi cracker window
+wpaOneCrackerIcon.addEventListener('click', () => {
+  switch(wpaOneCrackerOpen) {
+    case true:
+      wpaOneCrackerWindow.style.display = "none";
+      wpaOneCrackerOpen = false;
+    break;
+    case false:
+      wpaOneCrackerWindow.style.display = "block";
+      wpaOneCrackerOpen = true;
+    break;
+  }
+});
+
 // opening the drop down menus
 function showDropDown(value) {
   switch(value) {

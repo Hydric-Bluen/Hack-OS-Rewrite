@@ -47,6 +47,7 @@ header h3 {
   display: none;
   width: 45vh;
   height: 35vh;
+  border-radius: 5px;
   border: solid medium black;
 }
 
@@ -85,6 +86,16 @@ img:hover {
 }
 
 #wifi-connections-icon {
+  width: 46.5px;
+  height: 36.5px;
+}
+
+#wpa-1-cracker-icon {
+  width: 46.5px;
+  height: 36.5px;
+}
+
+#wpa-2-cracker-icon {
   width: 46.5px;
   height: 36.5px;
 }
